@@ -1,0 +1,20 @@
+<div id="brjstodo.knockout.items.view-template">
+
+  <section id="main" class="items-component" data-bind="visible: listVisible">
+
+    <input id="toggle-all" data-bind="checked: allCompleted" type="checkbox">
+    <label for="toggle-all">@{brjstodo.knockout.items.markCompleteLabel}</label>
+    <ul id="todo-list" class="todo-list" data-bind="foreach: todos">
+      <li data-bind="css: { completed: completed, editing: editing }">
+        <div class="view">
+          <input class="toggle" data-bind="checked: completed" type="checkbox">
+          <label data-bind="text: title, event: { dblclick: $parent.editItem }"></label>
+          <button class="destroy" data-bind="click: $parent.remove.bind( $parent )"></button>
+        </div>
+        <input class="edit" data-bind="value: title, valueUpdate: 'afterkeydown', selectAndFocus: editing, event: { blur: $parent.stopEditing.bind( $parent ), keypress: $parent.keyPressed.bind( $parent ), keydown: $parent.cancelEditing }">
+      </li>
+    </ul>
+
+  </section>
+
+</div>

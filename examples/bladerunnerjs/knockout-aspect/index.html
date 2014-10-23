@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<@base.tag@/>
+
+		<meta charset="utf-8">
+		<title>BladeRunnerJS + KnockoutJS • TodoMVC</title>
+
+		<@css.bundle theme="standard"@/>
+
+		<@i18n.bundle@/>
+
+	</head>
+	<body>
+
+		<section id="todoapp" ng-app="brjstodo"></section>
+
+		<footer id="info">
+			<p>Double-click to edit a todo</p>
+			<!-- Change this out with your name and url ↓ -->
+			<p>Created by <a href="http://bladerunnerjs.org/about/team/">The BladeRunnerJS team</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+
+		<!-- Updated to for BRJS ↓ -->
+		<@js.bundle@/>
+		<script>
+			( function() {
+				require( 'todomvc-common' );
+
+				var App = require( 'brjstodo/App' );
+				var app = new App();
+
+			} )();
+		</script>
+	</body>
+</html>
