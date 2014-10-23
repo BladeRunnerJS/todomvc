@@ -379,6 +379,61 @@
 			}]
 		}]
 	},
+	"bladerunnerjs": {
+		"name": "BladeRunnerJS",
+		"description": "BladeRunnerJS (BRJS) is an open source development toolkit and framework for modular construction of large single-page HTML5 apps. It consists of a set of conventions, supporting tools and micro-libraries that make it easier for teams to develop, test, deploy and maintain complex JavaScript apps.",
+		"homepage": "http://bladerunnerjs.org",
+		"source_path": [{
+			"name": "BladeRunnerJS + Knockout",
+			"url": "examples/bladerunnerjs/public/knockout/"
+		}],
+		"link_groups": [{
+			"heading": "Official Resources",
+			"links": [{
+				"name": "Documentation",
+				"url": "http://bladerunnerjs.org/docs/"
+			}, {
+				"name": "API Reference",
+				"url": "http://apidocs.bladerunnerjs.org/"
+			}, {
+				"name": "Applications built with BladeRunnerJS",
+				"url": "http://bladerunnerjs.org/docs/reference/example_apps/"
+			}, {
+				"name": "Blog",
+				"url": "http://bladerunnerjs.org/blog/"
+			}, {
+				"name": "FAQ",
+				"url": "http://bladerunnerjs.org/docs/reference/faq/"
+			}, {
+				"name": "BladeRunnerJS on GitHub",
+				"url": "https://github.com/bladerunnerjs"
+			}]
+		}, {
+			"heading": "Articles and Guides",
+			"links": [{
+				"name": "BladeRunnerJS Application Architectures",
+				"url": "http://bladerunnerjs.org/docs/concepts/app_architecture/"
+			},{
+				"name": "Getting Started with BladeRunnerJS",
+				"url": "http://bladerunnerjs.org/docs/use/getting_started/"
+			}, {
+				"name": "Using AngularJS with BladeRunnerJS",
+				"url": "http://bladerunnerjs.org/blog/using-angularjs-with-bladerunnerjs/"
+			}]
+		}, {
+			"heading": "Community",
+			"links": [{
+				"name": "BladeRunnerJS on StackOverflow",
+				"url": "http://stackoverflow.com/questions/tagged/bladerunnerjs"
+			}, {
+				"name": "BladeRunnerJS on Twitter",
+				"url": "http://twitter.com/bladerunnerjs"
+			}, {
+				"name": "BladeRunnerJS on Google +",
+				"url": "https://plus.google.com/108556511900055348789/"
+			}]
+		}]
+	},
 	"canjs": {
 		"name": "CanJS",
 		"description": "CanJS is a MIT-licensed, client-side, JavaScript framework that makes building rich web applications easy.",
