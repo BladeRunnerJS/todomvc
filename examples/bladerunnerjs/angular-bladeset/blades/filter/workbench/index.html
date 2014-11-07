@@ -6,14 +6,13 @@
 
 		<title>Workbench</title>
 
-		<@css.bundle theme="standard" @/>
-
-		<@i18n.bundle@/>
-
-		<@js.bundle @/>
+		<@css.bundle @/>
 
 	</head>
 	<body>
+
+		<@i18n.bundle @/>
+		<@js.bundle @/>
 
 		<script type="text/javascript">
 			require( 'todomvc-common' );
@@ -28,10 +27,10 @@
 			}
 
 			function addModelViewer( model, workbench ) {
-				var KnockoutModelTree = require( 'br/knockout/workbench/KnockoutModelTree' );
-				var PresentationModelViewer = require( 'br/presenter/workbench/ui/PresentationModelViewer' );
-				var presentationModelViewer = new PresentationModelViewer(model, KnockoutModelTree);
-				workbench.addToRightWing( presentationModelViewer, "Visualise Knockout View Model", false);
+				var KnockoutJsTreeModelFactory = require('br/knockout/workbench/KnockoutJsTreeModelFactory');
+				var PresentationModelViewer = require('br/knockout/workbench/PresentationModelViewer');
+				var presentationModelViewer = new PresentationModelViewer(KnockoutJsTreeModelFactory.createTreeModelFromKnockoutViewModel(model));
+				workbench.addToRightWing(presentationModelViewer, "Visualise Knockout View Model", false);
 			}
 
 			function addComponent( component, workbench  ) {
@@ -42,32 +41,29 @@
 			var workbench = new Workbench(250, 310);
 			addEventHubLogger( workbench );
 
-			// Set up TodoService
-			var LocalStorageService = require( 'todomvc/LocalStorageService' );
-			var todoService = new LocalStorageService();
-			ServiceRegistry.registerService( 'todomvc.storage', todoService );
-
 			var angular = require( 'angular' );
-			var InputDirective = require( 'brjstodo/angular/input/InputDirective' );
+			var FilterDirective = require( 'brjstodo/angular/filter/FilterDirective' );
 			angular.module('brjstodo', [])
-        .directive('todoInput', function() {
-					return new InputDirective();
+				.directive('todoFilter', function() {
+					return new FilterDirective();
 				} );
 
-		</script>
+			</script>
 
-		<style>
+			<style>
 			.ng-workbench {
+				position: relative;
+				top: 100px;
 				margin: auto;
-				width: 500px;
-				margin-top: 30px;
+				width: 450px;
 			}
-		</style>
+			</style>
 
 
-		<div class="ng-workbench" ng-app="brjstodo">
-			<todo-input></todo-input>
-		</div>
+			<div class="ng-workbench" ng-app="brjstodo">
+				<todo-filter></todo-filter>
+			</div>
 
+		</script>
 	</body>
 </html>

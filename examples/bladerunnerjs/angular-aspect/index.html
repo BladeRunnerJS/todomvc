@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<@base.tag@/>
+		<meta charset="UTF-8">
+
+		<title>BRJS Angular Todo MVC</title>
+
+		<@css.bundle theme="standard" @/>
+
+	</head>
+	<body>
+
+		<div id="todoapp" ng-app="brjstodo">
+			<todo-input></todo-input>
+			<todo-items></todo-items>
+			<todo-filter></todo-filter>
+		</div>
+
+		<footer id="info">
+			<p>Double-click to edit a todo</p>
+			<p>Built with <a href="http://bladerunnerjs.org">BladeRunnerJS</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+
+		<@i18n.bundle @/>
+    	<!-- dev-minifier can be set to "combined" for all JS content to be bundled with a single request -->
+		<@js.bundle dev-minifier="none" prod-minifier="combined"@/>
+		<script>
+			require( 'todomvc-common' );
+
+			var InputDirective = require( 'brjstodo/angular/input/InputDirective' );
+			var ItemsDirective = require( 'brjstodo/angular/items/ItemsDirective' );
+			var FilterDirective = require( 'brjstodo/angular/filter/FilterDirective' );
+
+			var angular = require( 'angular' );
+			angular.module( 'brjstodo', [] )
+				.directive('todoInput', function() {
+					return new InputDirective();
+				} )
+				.directive('todoItems', function() {
+					return new ItemsDirective();
+				} )
+				.directive('todoFilter', function() {
+					return new FilterDirective();
+				} );
+		</script>
+	</body>
+</html>

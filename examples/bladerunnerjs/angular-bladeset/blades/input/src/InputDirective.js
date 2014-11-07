@@ -8,7 +8,7 @@ var InputDirective = function() {
 
 	this.restrict = 'E';
 	this.replace = true;
-	this.template = HtmlService.getHTMLTemplate( 'brjstodo.ng.input.view-template' ).outerHTML;
+	this.template = HtmlService.getHTMLTemplate( 'brjstodo.angular.input.view-template' ).innerHTML;
 
 	this.controller = function( $scope ) {
 		$scope.newTodo = '';

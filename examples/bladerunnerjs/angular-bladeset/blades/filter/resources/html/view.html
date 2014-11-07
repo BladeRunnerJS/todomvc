@@ -1,0 +1,12 @@
+<div id="brjstodo.angular.filter.view-template">
+
+	<footer id="footer" class="filter-component" ng-show="todos.length" ng-cloak>
+		<span id="todo-count">
+			<strong>{{remainingCount}}</strong>
+			<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+		</span>
+
+		<button class="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+	</footer>
+
+</div>

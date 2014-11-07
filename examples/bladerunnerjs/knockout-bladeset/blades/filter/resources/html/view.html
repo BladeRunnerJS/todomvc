@@ -1,7 +1,10 @@
 <div id="brjstodo.knockout.filter.view-template">
 
   <footer id="footer" class="filter-component" data-bind="visible: visible">
-    <span class="todo-count"><strong data-bind="text: todoCount"></strong> <span data-bind="text: itemsLabel"></span></span>
+    <span id="todo-count">
+      <strong data-bind="text: todoCount"></strong>
+      <span data-bind="text: itemsLabel"></span>
+    </span>
 
     <button class="clear-completed" data-bind="click: clearCompleted">
       @{brjstodo.knockout.filter.clearCompletedLabel} (<span data-bind="text: completedCount"></span>)

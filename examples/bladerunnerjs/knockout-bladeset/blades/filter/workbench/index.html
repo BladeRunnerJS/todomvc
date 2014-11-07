@@ -10,7 +10,7 @@
 		<@js.bundle dev-minifier="none"@/>
 
 		<style>
-			.filter-component {
+			#footer {
 				margin-top: 50px;
 				width: 500px;
 				bottom: auto;
@@ -21,6 +21,8 @@
 		</style>
 
 		<script type="text/javascript">
+			require( 'todomvc-common' );
+
 			var EventHubViewer = require( 'br/workbench/tools/EventHubViewer' );
 			var Workbench = require( 'br/workbench/ui/Workbench' );
 			var KnockoutModelTree = require( 'br/knockout/workbench/KnockoutModelTree' );
