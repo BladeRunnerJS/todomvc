@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<@base.tag@/>
+		<meta charset="UTF-8">
+
+		<title>BRJS Knockout &amp; Angular Todo MVC</title>
+
+		<@css.bundle theme="standard" @/>
+
+	</head>
+	<body>
+
+		<div id="todoapp" ng-app="brjstodo">
+			<!-- This is where the Knockout Input Element will go -->
+			<todo-items></todo-items>
+			<todo-filter></todo-filter>
+		</div>
+
+		<footer id="info">
+			<p>Double-click to edit a todo</p>
+			<p>Built with <a href="http://bladerunnerjs.org">BladeRunnerJS</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+
+		<@i18n.bundle @/>
+			<!-- dev-minifier can be set to "combined" for all JS content to be bundled with a single request -->
+		<@js.bundle dev-minifier="none" prod-minifier="combined"@/>
+		<script>
+			( function() {
+				require( 'todomvc-common' );
+
+				var App = require( 'brjstodo/App' );
+				var app = new App();
+
+			} )();
+		</script>
+	</body>
+</html>
