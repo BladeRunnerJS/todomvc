@@ -27,14 +27,7 @@ function FilterDirective() {
 		}
 
 		$scope.clearCompletedTodos = function () {
-			var todos = todoService.getTodos();
-			var todo, i;
-			for( i = todos.length - 1; i >= 0; --i ) {
-				todo = todos[ i ];
-				if( todo.completed ) {
-					todoService.removeTodo( todo );
-				}
-			}
+			todoService.clearCompleted();
 		};
 
 		todoService.on( 'todo-added', update );

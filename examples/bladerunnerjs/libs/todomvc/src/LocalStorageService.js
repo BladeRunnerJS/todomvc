@@ -34,9 +34,9 @@ LocalStorageService.prototype.updateTodo = function( item ) {
 };
 
 LocalStorageService.prototype.removeTodo = function( item ) {
-  this._items.forEach( function( existingItem ) {
+  this._items.forEach( function( existingItem, i ) {
     if ( item === existingItem ) {
-      this._items.splice( item, 1 );
+      this._items.splice( i, 1 );
       this._sync();
 
       this.trigger( 'todo-removed', item );
@@ -44,6 +44,19 @@ LocalStorageService.prototype.removeTodo = function( item ) {
       return false;
     }
   }, this );
+};
+
+LocalStorageService.prototype.clearCompleted = function() {
+  var todos = this.getTodos();
+  var todo;
+  var i = todos.length;
+  while( i > 0 ) {
+    --i;
+    todo = todos[ i ];
+    if( todo.completed ) {
+      this.removeTodo( todo );
+    }
+  }
 };
 
 LocalStorageService.prototype.getTodos = function() {

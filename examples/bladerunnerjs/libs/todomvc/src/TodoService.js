@@ -12,6 +12,8 @@ TodoService.prototype.removeTodo = function( todo ) {};
 
 TodoService.prototype.getTodos = function() {};
 
+TodoService.prototype.clearCompleted = function() {};
+
 /**
  * Events:
  *

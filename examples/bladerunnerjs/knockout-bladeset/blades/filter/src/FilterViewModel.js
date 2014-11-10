@@ -46,12 +46,7 @@ FilterViewModel.prototype._sync = function() {
  * Called from the View to indicate completed items should be cleared.
  */
 FilterViewModel.prototype.clearCompleted = function() {
-  var todos = this._todoService.getTodos();
-  todos.forEach( function( todo ) {
-    if( todo.completed ) {
-      this._todoService.removeTodo( todo );
-    }
-  }, this );
+  this._todoService.clearCompleted();
 };
 
 module.exports = FilterViewModel;
