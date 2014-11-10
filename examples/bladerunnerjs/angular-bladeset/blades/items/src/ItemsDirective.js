@@ -11,18 +11,21 @@ function ItemsDirective() {
 	this.replace = true;
 	this.template = HtmlService.getHTMLTemplate( 'brjstodo.angular.items.view-template' ).innerHTML;
 
-	this.controller = function( $scope ) {
+	this.controller = function( $scope, $timeout ) {
 		$scope.todos = todoService.getTodos();
 		$scope.editedTodo = null;
 		$scope.originalTodo = null;
 
 		function update() {
-			var todos = todoService.getTodos();
-			var completedCount = 0;
-			todos.forEach(function (todo) {
-				completedCount += ( todo.completed? 1 : 0 );
-			});
-			$scope.allChecked = ( todos.length === completedCount );
+			// Use $timeout this handles events from outside of Angular
+			$timeout( function() {
+				var todos = todoService.getTodos();
+				var completedCount = 0;
+				todos.forEach( function( todo ) {
+					completedCount += ( todo.completed? 1 : 0 );
+				} );
+				$scope.allChecked = ( todos.length === completedCount );
+			} );
 		}
 
 		// Note: could use $scope.$watch here. But that feels like magic.
