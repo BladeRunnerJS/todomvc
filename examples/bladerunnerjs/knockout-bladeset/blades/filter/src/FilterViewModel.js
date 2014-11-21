@@ -24,10 +24,23 @@ function FilterViewModel() {
       return ( this.todoCount() > 0 ||
                this.completedCount() > 0 );
     }, this);
+
+  this.statusFilter = ko.observable( '' );
+
+  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  eventHub.channel( 'todo-filter' ).on( 'filter-changed', this._filterChanged, this );
+
+  this._sync();
 }
+
+/** @private **/
+FilterViewModel.prototype._filterChanged = function( filter ) {
+  this.statusFilter( filter );
+};
 
 /**
  * Synchronise the UI state with the contents of the service.
+ * @private
  */
 FilterViewModel.prototype._sync = function() {
   var todos = this._todoService.getTodos();

@@ -6,6 +6,18 @@
       <span data-bind="text: itemsLabel"></span>
     </span>
 
+		<ul id="filters">
+			<li>
+				<a data-bind="css: { selected: statusFilter() == '' }" href="en/#/">All</a>
+			</li>
+			<li>
+				<a data-bind="css: { selected: statusFilter() == 'active' }" href="en/#/active">Active</a>
+			</li>
+			<li>
+				<a data-bind="css: { selected: statusFilter() == 'completed' }" href="en/#/completed">Completed</a>
+			</li>
+		</ul>
+
     <button id="clear-completed" data-bind="click: clearCompleted">
       @{brjstodo.knockout.filter.clearCompletedLabel} (<span data-bind="text: completedCount"></span>)
     </button>

@@ -10,6 +10,10 @@ var LocalStorageService = require( 'todomvc/LocalStorageService' );
 var todoService = new LocalStorageService();
 ServiceRegistry.registerService( 'todomvc.storage', todoService );
 
+var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+
+var Router = require( 'director' ).Router;
+
 var App = function() {
 
   var todoAppEl = document.getElementById( 'todoapp' );
@@ -31,6 +35,34 @@ var App = function() {
   var filterComponent = new KnockoutComponent( 'brjstodo.knockout.filter.view-template', filterModel );
   var filterEl = filterComponent.getElement();
   todoAppEl.appendChild( filterEl );
+
+  var routes = {
+    '/': this.root.bind( this ),
+    '/active': this.active.bind( this ),
+    '/completed': this.completed.bind( this )
+  };
+
+  var router = Router( routes );
+  router.init();
+
+  if( !window.location.hash ) {
+    window.location.hash = '#/';
+  }
+};
+
+App.prototype.root = function() {
+  eventHub.channel( 'todo-filter' )
+    .trigger( 'filter-changed', '' );
+};
+
+App.prototype.active = function() {
+  eventHub.channel( 'todo-filter' )
+    .trigger( 'filter-changed', 'active' );
+};
+
+App.prototype.completed = function() {
+  eventHub.channel( 'todo-filter' )
+    .trigger( 'filter-changed', 'completed' );
 };
 
 module.exports = App;

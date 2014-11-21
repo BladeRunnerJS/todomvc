@@ -4,7 +4,7 @@
 
     <input id="toggle-all" data-bind="checked: allCompleted" type="checkbox">
     <label for="toggle-all">@{brjstodo.knockout.items.markCompleteLabel}</label>
-    <ul id="todo-list" class="todo-list" data-bind="foreach: todos">
+    <ul id="todo-list" class="todo-list" data-bind="foreach: filteredTodos">
       <li data-bind="css: { completed: completed, editing: editing }">
         <div class="view">
           <input class="toggle" data-bind="checked: completed" type="checkbox">

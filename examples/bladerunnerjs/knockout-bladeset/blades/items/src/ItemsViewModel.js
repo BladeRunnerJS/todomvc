@@ -40,6 +40,28 @@ function ItemsViewModel() {
 
   this.todos = ko.observableArray( todoVMs );
 
+  this.statusFilter = ko.observable( '' );
+
+  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  eventHub.channel( 'todo-filter' ).on( 'filter-changed', function( filter ) {
+    this.statusFilter( filter );
+  }.bind( this ) );
+
+  this.filteredTodos = ko.computed(function () {
+		switch (this.statusFilter()) {
+  		case 'active':
+  			return this.todos().filter(function (todo) {
+  				return !todo.completed();
+  			});
+  		case 'completed':
+  			return this.todos().filter(function (todo) {
+  				return todo.completed();
+  			});
+  		default:
+  			return this.todos();
+		}
+	}.bind(this));
+
   this.listVisible = new ko.computed(function() {
       return this.todos().length;
     }, this);
