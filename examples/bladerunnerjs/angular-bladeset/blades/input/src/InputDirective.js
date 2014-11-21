@@ -18,7 +18,7 @@ var InputDirective = function() {
 				return;
 			}
 
-			var todoItem = { title: newTodo };
+			var todoItem = { title: newTodo, completed: false };
 			todoService.addTodo( todoItem );
 
 			$scope.newTodo = '';

@@ -33,6 +33,14 @@ function ItemsDirective() {
 		todoService.on( 'todo-updated', update );
 		todoService.on( 'todo-removed', update );
 
+		var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+		console.log( 'registering' );
+		eventHub.channel( 'todo-filter' ).on( 'filter-changed', function( status ) {
+			$scope.statusFilter = (status === 'active') ?
+				{ completed: false } : (status === 'completed') ?
+				{ completed: true } : null;
+		} );
+
 		$scope.editTodo = function (todo) {
 			$scope.editedTodo = todo;
 			// Clone the original todo to restore it on demand.

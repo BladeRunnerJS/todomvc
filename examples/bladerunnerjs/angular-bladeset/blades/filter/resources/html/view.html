@@ -5,7 +5,17 @@
 			<strong>{{remainingCount}}</strong>
 			<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
 		</span>
-
+		<ul id="filters">
+			<li>
+				<a ng-class="{selected: status == ''} " href="en/#/">All</a>
+			</li>
+			<li>
+				<a ng-class="{selected: status == 'active'}" href="en/#/active">Active</a>
+			</li>
+			<li>
+				<a ng-class="{selected: status == 'completed'}" href="en/#/completed">Completed</a>
+			</li>
+		</ul>
 		<button id="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
 	</footer>
 
