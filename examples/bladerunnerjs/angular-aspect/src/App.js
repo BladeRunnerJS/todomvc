@@ -41,19 +41,16 @@ var App = function() {
 };
 
 App.prototype.root = function() {
-  console.log( 'root' );
   eventHub.channel( 'todo-filter' )
     .trigger( 'filter-changed', '' );
 };
 
 App.prototype.active = function() {
-  console.log( 'active' );
   eventHub.channel( 'todo-filter' )
     .trigger( 'filter-changed', 'active' );
 };
 
 App.prototype.completed = function() {
-  console.log( 'completed' );
   eventHub.channel( 'todo-filter' )
     .trigger( 'filter-changed', 'completed' );
 };
