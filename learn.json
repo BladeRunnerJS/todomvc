@@ -383,10 +383,16 @@
 		"name": "BladeRunnerJS",
 		"description": "BladeRunnerJS (BRJS) is an open source development toolkit and framework for modular construction of large single-page HTML5 apps. It consists of a set of conventions, supporting tools and micro-libraries that make it easier for teams to develop, test, deploy and maintain complex JavaScript apps.",
 		"homepage": "http://bladerunnerjs.org",
-		"source_path": [{
-			"name": "BladeRunnerJS + Knockout",
-			"url": "examples/bladerunnerjs/public/knockout/"
-		}],
+		"examples": [{
+				"name": "BladeRunnerJS + Knockout",
+				"url": "examples/bladerunnerjs/public/knockout/"
+			}, {
+				"name": "BladeRunnerJS + AngularJS",
+				"url": "examples/bladerunnerjs/public/angular/"
+			}, {
+				"name": "BladeRunnerJS + Knockout + AngularJS",
+				"url": "examples/bladerunnerjs/public/mixed/"
+			}],
 		"link_groups": [{
 			"heading": "Official Resources",
 			"links": [{
